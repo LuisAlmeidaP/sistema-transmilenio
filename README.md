@@ -28,7 +28,6 @@ Basado en Benítez, R. (2014). *Inteligencia artificial avanzada*. Editorial UOC
 | `tests/test_sistema.py` | 16 pruebas unitarias |
 | `docs/Informe_de_pruebas.pdf` | Documento PDF con las pruebas realizadas |
 | `docs/generar_informe_pruebas.py` | Regenera el PDF ejecutando todas las pruebas |
-| `docs/guion_video.md` | Guion del video, repartido entre los 4 integrantes |
 
 ### Reglas de la base de conocimiento
 

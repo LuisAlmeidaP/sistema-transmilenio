@@ -1,0 +1,3 @@
+# Opcionales: el programa principal solo usa la librería estándar de Python.
+matplotlib>=3.5   # para --graficar
+reportlab>=3.6    # para regenerar docs/Informe_de_pruebas.pdf

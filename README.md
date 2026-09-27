@@ -111,30 +111,3 @@ python -m unittest -v                  # 16 pruebas unitarias
 python docs/generar_informe_pruebas.py # regenera docs/Informe_de_pruebas.pdf
 ```
 
----
-
-## 4. Trabajo en equipo con Git
-
-El log del repositorio debe mostrar el trabajo de **cada integrante**, así que cada uno hace sus commits desde su propia cuenta:
-
-```bash
-git config user.name  "Nombre Apellido"
-git config user.email "correo@ejemplo.com"
-```
-
-Reparto sugerido (cada integrante agrega y sube sus archivos):
-
-| Integrante | Archivos | Mensaje de commit sugerido |
-|---|---|---|
-| 1 | `base_conocimiento.py`, `README.md`, `requirements.txt`, `.gitignore` | `feat: base de conocimiento con hechos y reglas R1-R7` |
-| 2 | `motor_inferencia.py` | `feat: motor de inferencia con encadenamiento hacia adelante y explicación` |
-| 3 | `busqueda.py`, `sistema.py`, `visualizacion.py` | `feat: búsqueda heurística A* y comparación de algoritmos` |
-| 4 | `main.py`, `tests/`, `docs/` | `feat: interfaz de línea de comandos, pruebas e informe` |
-
-```bash
-git add <archivos>
-git commit -m "<mensaje>"
-git pull --rebase && git push
-```
-
-**Agregar al tutor:** en GitHub, *Settings → Collaborators → Add people*. En GitLab, *Manage → Members → Invite members* con el rol *Reporter* o *Developer*.

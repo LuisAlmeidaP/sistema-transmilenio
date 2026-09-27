@@ -4,8 +4,6 @@ Sistema basado en conocimiento que, a partir de una **base de conocimiento escri
 
 Basado en Benítez, R. (2014). *Inteligencia artificial avanzada*. Editorial UOC: cap. 2 (lógica y representación del conocimiento), cap. 3 (sistemas basados en reglas) y cap. 9 (búsqueda heurística).
 
-**Integrantes:** Integrante 1 · Integrante 2 · Integrante 3 · Integrante 4
-
 ---
 
 ## 1. Arquitectura

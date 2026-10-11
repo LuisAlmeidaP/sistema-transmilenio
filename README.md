@@ -1,6 +1,9 @@
 # Sistema inteligente de rutas — TransMilenio (modelo)
 
-Sistema basado en conocimiento que, a partir de una **base de conocimiento escrita en reglas lógicas**, encuentra la **mejor ruta** entre un punto A y un punto B del sistema de transporte masivo. Usa un **motor de inferencia con encadenamiento hacia adelante** y la **búsqueda heurística A\***.
+Proyecto de Inteligencia Artificial sobre el sistema de transporte masivo de Bogotá:
+
+- **Actividad 2 — Búsqueda y sistemas basados en reglas:** a partir de una **base de conocimiento escrita en reglas lógicas**, encuentra la **mejor ruta** entre un punto A y un punto B. Usa un **motor de inferencia con encadenamiento hacia adelante** y la **búsqueda heurística A\***.
+- **Actividad 3 — Aprendizaje supervisado:** un **árbol de decisión** aprende de datos históricos a predecir el **nivel de congestión** (baja, media, alta) de cada estación según la hora, el día, la lluvia y los eventos masivos, y se integra al buscador de rutas. Ver la [sección 4](#4-actividad-3--aprendizaje-supervisado-predicción-de-congestión).
 
 Basado en Benítez, R. (2014). *Inteligencia artificial avanzada*. Editorial UOC: cap. 2 (lógica y representación del conocimiento), cap. 3 (sistemas basados en reglas) y cap. 9 (búsqueda heurística).
 
@@ -26,8 +29,8 @@ Basado en Benítez, R. (2014). *Inteligencia artificial avanzada*. Editorial UOC
 | `main.py` | Interfaz de línea de comandos y modo interactivo |
 | `visualizacion.py` | Dibuja el mapa con la ruta (matplotlib) |
 | `tests/test_sistema.py` | 16 pruebas unitarias |
-| `docs/Informe_de_pruebas.pdf` | Documento PDF con las pruebas realizadas |
-| `docs/generar_informe_pruebas.py` | Regenera el PDF ejecutando todas las pruebas |
+| `docs/Informe_de_pruebas.pdf` | Documento PDF con las pruebas realizadas (Actividad 2) |
+| `docs/generar_informe_pruebas.py` | Regenera el PDF ejecutando todas las pruebas (Actividad 2) |
 
 ### Reglas de la base de conocimiento
 
@@ -52,12 +55,12 @@ R7: tramo_habilitado(X,Y,L) ∧ alcanzable(Y,Z) ∧ X≠Z → alcanzable(X,Z)
 ## 2. Requisitos e instalación
 
 - Python 3.8 o superior
-- El programa principal **no necesita librerías externas**. `matplotlib` solo hace falta para `--graficar`, y `reportlab` solo para regenerar el PDF de pruebas.
+- El buscador de rutas (Actividad 2) **no necesita librerías externas**. La Actividad 3 usa `numpy`, `pandas`, `scikit-learn` y `matplotlib`; `reportlab` solo hace falta para regenerar los PDF.
 
 ```bash
 git clone <URL-DEL-REPOSITORIO>
 cd ruta_inteligente
-pip install -r requirements.txt      # opcional
+pip install -r requirements.txt      # obligatorio para la Actividad 3
 ```
 
 ---
@@ -107,7 +110,77 @@ Transbordos              : 2
 
 ### Pruebas
 ```bash
-python -m unittest -v                  # 16 pruebas unitarias
+python -m unittest -v                  # 34 pruebas unitarias (16 de la Act. 2 + 18 de la Act. 3)
 python docs/generar_informe_pruebas.py # regenera docs/Informe_de_pruebas.pdf
 ```
+
+---
+
+## 4. Actividad 3 — Aprendizaje supervisado: predicción de congestión
+
+Basado en Palma Méndez, J. T. (2008). *Inteligencia artificial: métodos, técnicas y aplicaciones*, cap. 17 (Aprendizaje de árboles y reglas de decisión).
+
+**Problema:** clasificación en 3 clases. Dada una estación, un día y una hora (más lluvia y eventos), predecir si la congestión será **baja**, **media** o **alta**.
+
+### Entregables
+
+| # | Entregable | Ubicación |
+|---|---|---|
+| 1 | Archivos de fuentes de datos | [`datos/afluencia_transmilenio_muestra.csv`](datos/afluencia_transmilenio_muestra.csv) (47 880 registros) y [`datos/estaciones.csv`](datos/estaciones.csv) |
+| 2 | Código fuente en Python | [`aprendizaje/`](aprendizaje/) |
+| 3 | Descripción de los datos | [`docs/Descripcion_de_los_datos.pdf`](docs/Descripcion_de_los_datos.pdf) y [`datos/README.md`](datos/README.md) |
+| 4 | Pruebas del componente | [`docs/Informe_de_pruebas_actividad3.pdf`](docs/Informe_de_pruebas_actividad3.pdf) y [`tests/test_aprendizaje.py`](tests/test_aprendizaje.py) |
+| 5 | Video | *(enlace al video)* |
+
+### Estructura
+
+| Archivo | Contenido |
+|---|---|
+| `aprendizaje/generar_dataset.py` | Construye el dataset de muestra (95 estaciones × 28 días × 18 horas) |
+| `aprendizaje/preparar_datos.py` | Carga y valida los datos, elige las variables predictoras y divide por fecha |
+| `aprendizaje/id3.py` | Entropía y ganancia de información calculadas a mano (algoritmo ID3) |
+| `aprendizaje/entrenar.py` | Entrena y compara 4 modelos, poda el árbol con validación cruzada, extrae reglas y guarda el modelo |
+| `aprendizaje/predecir.py` | Predice la congestión y explica la regla que se aplicó |
+| `aprendizaje/resultados/` | Métricas, matrices de confusión, árbol, importancia de variables y reglas (`reglas_arbol.txt`) |
+| `aprendizaje/modelos/arbol_congestion.joblib` | Árbol de decisión entrenado |
+| `tests/test_aprendizaje.py` | 18 pruebas unitarias |
+| `docs/generar_documentos_actividad3.py` | Regenera los dos PDF ejecutando el código |
+
+### Comandos
+
+```bash
+pip install -r requirements.txt
+
+python -m aprendizaje.generar_dataset          # 1. genera datos/afluencia_transmilenio_muestra.csv
+python -m aprendizaje.id3                      # 2. ganancia de información de cada atributo (ID3)
+python -m aprendizaje.entrenar                 # 3. entrena, compara y guarda el modelo (~30 s)
+
+# 4. predicciones explicadas
+python -m aprendizaje.predecir --estacion "Portal del Norte" --dia lunes --hora 6
+python -m aprendizaje.predecir --estacion "Movistar Arena" --dia sabado --hora 20 --evento
+python -m aprendizaje.predecir --estacion "Calle 26" --dia martes          # perfil de todo el día
+
+# 5. integración con el buscador de rutas de la Actividad 2
+python main.py -o "Portal El Dorado" -d "Portal Américas" --dia lunes --hora 7
+
+# 6. pruebas y documentos
+python -m unittest -v
+python docs/generar_documentos_actividad3.py
+```
+
+### Resultados (semana 4, que el modelo nunca vio)
+
+| Modelo | Exactitud | F1 macro | Recall clase alta |
+|---|---|---|---|
+| Línea base (clase más frecuente) | 0.610 | 0.253 | 0.000 |
+| **Árbol de decisión (entropía)** | **0.857** | **0.814** | **0.839** |
+| Random Forest (200 árboles) | 0.866 | 0.825 | 0.833 |
+| Regresión logística | 0.616 | 0.304 | 0.026 |
+
+- El árbol queda casi empatado con Random Forest y, a diferencia de este, **se puede leer como reglas SI–ENTONCES**.
+- La regresión logística falla porque la congestión no crece linealmente con la hora (hay dos picos).
+- `validaciones` e `indice_ocupacion` **no se usan como entradas** porque definen la clase (fuga de información).
+- La división es **temporal**: se entrena con las semanas 1–3 y se prueba con la semana 4.
+
+> **Aviso sobre los datos:** las fuentes abiertas reales (salidas del sistema troncal por franja horaria, geografía de estaciones, GTFS) no publican la afluencia por estación y por hora con un nivel de congestión. Por eso, como permite el enunciado, se construyó una **muestra** con la misma estructura, reproducible con semilla fija. Para usar datos reales basta con reemplazar el CSV y volver a entrenar. Detalles en `docs/Descripcion_de_los_datos.pdf`.
 

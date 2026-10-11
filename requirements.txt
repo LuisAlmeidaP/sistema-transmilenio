@@ -1,3 +1,8 @@
-# Opcionales: el programa principal solo usa la librería estándar de Python.
-matplotlib>=3.5   # para --graficar
-reportlab>=3.6    # para regenerar docs/Informe_de_pruebas.pdf
+# Actividad 2 (rutas): main.py funciona solo con la librería estándar de Python.
+# Actividad 3 (aprendizaje supervisado):
+numpy>=1.23
+pandas>=1.5
+scikit-learn>=1.2
+joblib>=1.2
+matplotlib>=3.5   # gráficas (--graficar y resultados del modelo)
+reportlab>=3.6    # solo para regenerar los PDF de docs/

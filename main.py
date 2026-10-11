@@ -8,10 +8,14 @@ Ejemplos:
     python main.py -o "Calle 100" -d "Ricaurte" --cerrar "Av. Jiménez" --explicar
     python main.py -o "Toberín" -d "Portal Américas" --criterio transbordos
     python main.py --listar
+    python main.py -o "Portal del Norte" -d "Ricaurte" --dia lunes --hora 7   # + congestión (Actividad 3)
     python main.py                 # modo interactivo
 """
 import argparse
+import math
 import sys
+
+import base_conocimiento as bc
 
 from motor_inferencia import formatear
 from sistema import SistemaRutas
@@ -66,6 +70,42 @@ def mostrar_ruta(sistema, origen, destino, algoritmo="astar", explicar=False, gr
         ruta = dibujar_red(sistema, resultado, graficar)
         print(f"\nMapa guardado en: {ruta}")
     return resultado
+
+
+def mostrar_congestion(sistema, resultado, dia, hora):
+    """Actividad 3: usa el árbol de decisión entrenado para estimar la congestión en
+    las estaciones donde el usuario sube, hace transbordo y baja, a la hora en que
+    llegaría a cada una."""
+    try:
+        from aprendizaje.predecir import cargar_modelo, construir_fila, dia_a_numero, predecir
+        modelo = cargar_modelo()
+        d = dia_a_numero(dia)
+    except ImportError:
+        print("\n(Para estimar la congestión instale las dependencias: pip install -r requirements.txt)")
+        return None
+    except (FileNotFoundError, ValueError) as e:
+        print(f"\n({e})")
+        return None
+    titulo(f"CONGESTIÓN ESTIMADA — {dia} desde las {hora:02d}:00 (árbol de decisión)")
+    puntos, minutos = [], 0.0
+    camino = resultado.camino
+    puntos.append(("Sube", camino[0][0], 0.0))
+    for a, b in zip(camino, camino[1:]):
+        if a[0] == b[0]:
+            puntos.append(("Transbordo", a[0], minutos))
+            minutos += bc.PENALIZACION_TRANSBORDO_MIN
+        else:
+            minutos += sistema.red.tiempo_tramo(a[0], b[0])
+    puntos.append(("Baja", camino[-1][0], minutos))
+    salida = []
+    for accion, est, mins in puntos:
+        h = min(22, hora + math.floor(mins / 60))
+        clase, proba = predecir(modelo, construir_fila(est, d, h))
+        aviso = "  ⚠ considere salir antes o después" if clase == "alta" else ""
+        print(f"{accion:<11}{est:<22}≈{h:02d}:00   congestión {clase.upper():<6}"
+              f"(P = {proba[clase]:.0%}){aviso}")
+        salida.append((accion, est, h, clase))
+    return salida
 
 
 def comparar(sistema, origen, destino):
@@ -137,7 +177,13 @@ def main(argv=None):
     p.add_argument("--comparar", action="store_true", help="compara A*, Dijkstra, voraz y BFS")
     p.add_argument("--graficar", metavar="ARCHIVO.png", help="guarda un mapa con la ruta")
     p.add_argument("--listar", action="store_true", help="muestra la base de conocimiento")
+    p.add_argument("--dia", help="día del viaje (lunes..domingo): estima la congestión con el modelo de la Actividad 3")
+    p.add_argument("--hora", type=int, help="hora de salida 5..22 (se usa con --dia)")
     args = p.parse_args(argv)
+    if (args.dia is None) != (args.hora is None):
+        p.error("--dia y --hora se usan juntos")
+    if args.hora is not None and not 5 <= args.hora <= 22:
+        p.error("--hora debe estar entre 5 y 22")
 
     if not (args.origen or args.destino or args.listar):
         interactivo()
@@ -147,7 +193,9 @@ def main(argv=None):
         if args.listar:
             listar(sistema)
         if args.origen and args.destino:
-            mostrar_ruta(sistema, args.origen, args.destino, args.algoritmo, args.explicar, args.graficar)
+            res = mostrar_ruta(sistema, args.origen, args.destino, args.algoritmo, args.explicar, args.graficar)
+            if args.dia and res.encontrada:
+                mostrar_congestion(sistema, res, args.dia, args.hora)
             if args.comparar:
                 comparar(sistema, args.origen, args.destino)
         elif args.origen or args.destino:

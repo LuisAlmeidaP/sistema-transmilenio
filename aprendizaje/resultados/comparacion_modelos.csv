@@ -1,0 +1,5 @@
+modelo,exactitud,f1_macro,recall_alta,f1_entrenamiento,segundos
+Línea base (clase más frecuente),0.6099,0.2526,0.0,0.2634,0.1758
+Árbol de decisión (entropía),0.8568,0.8134,0.8388,0.838,9.1665
+Random Forest (200 árboles),0.8647,0.8238,0.8326,0.8673,1.2074
+Regresión logística,0.6161,0.3043,0.026,0.3179,0.2907

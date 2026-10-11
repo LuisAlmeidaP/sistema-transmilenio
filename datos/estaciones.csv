@@ -1,0 +1,96 @@
+estacion,troncal,tipo_estacion,num_troncales,latitud,longitud,distancia_centro_km,capacidad_hora
+Alcalá,Caracas-Autonorte,sencilla,1,4.7165,-74.0505,13.08,4000
+Alquería,NQS,sencilla,1,4.587,-74.13,6.05,4000
+Av. 39,Caracas-Autonorte,sencilla,1,4.627,-74.0695,2.92,4000
+Av. 68,Calle 80,sencilla,1,4.688,-74.088,9.63,4000
+Av. Chile,NQS,sencilla,1,4.662,-74.075,6.68,4000
+Av. Ciudad de Cali,Calle 80,sencilla,1,4.705,-74.105,11.85,4000
+Av. El Dorado,NQS,sencilla,1,4.634,-74.08,3.57,4000
+Av. Jiménez,Caracas-Autonorte,transbordo,2,4.602,-74.0775,0.0,9000
+Av. Rojas,Calle 26,sencilla,1,4.661,-74.102,7.1,4000
+Banderas,Américas,sencilla,1,4.63,-74.152,8.82,4000
+Biblioteca Tintal,Américas,sencilla,1,4.631,-74.165,10.22,4000
+Boyacá,Calle 80,sencilla,1,4.696,-74.096,10.65,4000
+CAD,NQS,sencilla,1,4.628,-74.083,2.95,4000
+CAN,Calle 26,sencilla,1,4.648,-74.089,5.27,4000
+CDS-Carrera 32,Américas,sencilla,1,4.615,-74.096,2.51,4000
+Calle 100,Caracas-Autonorte,sencilla,1,4.684,-74.0565,9.41,4000
+Calle 106,Caracas-Autonorte,sencilla,1,4.689,-74.0555,9.98,4000
+Calle 127,Caracas-Autonorte,sencilla,1,4.702,-74.053,11.45,4000
+Calle 146,Caracas-Autonorte,sencilla,1,4.724,-74.0495,13.92,4000
+Calle 161,Caracas-Autonorte,sencilla,1,4.7392,-74.048,15.6,4000
+Calle 19,Caracas-Autonorte,sencilla,1,4.606,-74.076,0.47,4000
+Calle 22,Caracas-Autonorte,sencilla,1,4.61,-74.0745,0.95,4000
+Calle 26,Caracas-Autonorte,transbordo,2,4.615,-74.0725,1.55,9000
+Calle 34,Caracas-Autonorte,sencilla,1,4.621,-74.0705,2.25,4000
+Calle 40 Sur,Caracas-Autonorte,sencilla,1,4.567,-74.101,4.68,4000
+Calle 45,Caracas-Autonorte,sencilla,1,4.632,-74.0685,3.48,4000
+Calle 57,Caracas-Autonorte,sencilla,1,4.642,-74.0665,4.61,4000
+Calle 63,Caracas-Autonorte,sencilla,1,4.647,-74.0655,5.18,4000
+Calle 72,Caracas-Autonorte,sencilla,1,4.657,-74.063,6.32,4000
+Calle 76,Caracas-Autonorte,sencilla,1,4.662,-74.062,6.89,4000
+Calle 85,Caracas-Autonorte,sencilla,1,4.67,-74.0588,7.84,4000
+Carrera 43,Américas,sencilla,1,4.623,-74.106,3.93,4000
+Carrera 47,Calle 80,sencilla,1,4.68,-74.08,8.68,4000
+Carrera 53,Calle 80,sencilla,1,4.684,-74.084,9.15,4000
+Carrera 90,Calle 80,sencilla,1,4.708,-74.108,12.26,4000
+Centro Memoria,Calle 26,sencilla,1,4.623,-74.077,2.34,4000
+Ciudad Universitaria,Calle 26,sencilla,1,4.631,-74.082,3.26,4000
+Comuneros,NQS,sencilla,1,4.605,-74.096,2.08,4000
+Concejo de Bogotá,Calle 26,sencilla,1,4.628,-74.08,2.9,4000
+Corferias,Calle 26,sencilla,1,4.635,-74.083,3.72,4000
+De La Sabana,Américas,sencilla,1,4.605,-74.083,0.69,4000
+Distrito Grafiti,Américas,sencilla,1,4.629,-74.118,5.4,4000
+El Campín,NQS,sencilla,1,4.646,-74.078,4.89,4000
+El Tiempo,Calle 26,sencilla,1,4.657,-74.098,6.52,4000
+Escuela Militar,Calle 80,sencilla,1,4.676,-74.076,8.23,4000
+Ferias,Calle 80,sencilla,1,4.692,-74.092,10.14,4000
+Flores,Caracas-Autonorte,sencilla,1,4.652,-74.064,5.76,4000
+General Santander,NQS,sencilla,1,4.582,-74.121,5.31,4000
+Gobernación,Calle 26,sencilla,1,4.644,-74.086,4.76,4000
+Granja-Carrera 77,Calle 80,sencilla,1,4.702,-74.102,11.45,4000
+Hortúa,Caracas-Autonorte,sencilla,1,4.592,-74.084,1.32,4000
+Hospital,Caracas-Autonorte,sencilla,1,4.588,-74.087,1.88,4000
+Héroes,Caracas-Autonorte,transbordo,2,4.666,-74.06,7.38,9000
+Mandalay,Américas,sencilla,1,4.633,-74.146,8.34,4000
+Marly,Caracas-Autonorte,sencilla,1,4.637,-74.0675,4.05,4000
+Marsella,Américas,sencilla,1,4.633,-74.134,7.15,4000
+Mazurén,Caracas-Autonorte,sencilla,1,4.7318,-74.0487,14.78,4000
+Minuto de Dios,Calle 80,sencilla,1,4.699,-74.099,11.05,4000
+Modelia,Calle 26,sencilla,1,4.672,-74.115,8.82,4000
+Movistar Arena,NQS,sencilla,1,4.651,-74.078,5.45,4000
+Mundo Aventura,Américas,sencilla,1,4.635,-74.14,7.84,4000
+NQS Calle 30 Sur,NQS,sencilla,1,4.59,-74.11,3.84,4000
+NQS Calle 38A Sur,NQS,sencilla,1,4.586,-74.115,4.52,4000
+NQS Calle 75,NQS,sencilla,1,4.669,-74.073,7.47,4000
+Normandía,Calle 26,sencilla,1,4.666,-74.109,7.93,4000
+Olaya,Caracas-Autonorte,sencilla,1,4.578,-74.094,3.24,4000
+Paloquemao,NQS,sencilla,1,4.617,-74.085,1.86,4000
+Patio Bonito,Américas,sencilla,1,4.634,-74.172,11.06,4000
+Pepe Sierra,Caracas-Autonorte,sencilla,1,4.695,-74.054,10.66,4000
+Polo,Calle 80,transbordo,2,4.672,-74.07,7.83,9000
+Portal 80,Calle 80,portal,1,4.711,-74.112,12.71,12000
+Portal Américas,Américas,portal,1,4.631,-74.18,11.81,12000
+Portal El Dorado,Calle 26,portal,1,4.681,-74.12,9.97,12000
+Portal Sur,NQS,portal,1,4.596,-74.152,8.28,12000
+Portal del Norte,Caracas-Autonorte,portal,1,4.7546,-74.0462,17.32,12000
+Pradera,Américas,sencilla,1,4.631,-74.126,6.27,4000
+Prado,Caracas-Autonorte,sencilla,1,4.709,-74.0519,12.23,4000
+Puente Aranda,Américas,sencilla,1,4.626,-74.112,4.66,4000
+Quinta Paredes,Calle 26,sencilla,1,4.64,-74.084,4.29,4000
+Quirigua,Calle 80,sencilla,1,4.7095,-74.11,12.48,4000
+Quiroga,Caracas-Autonorte,sencilla,1,4.572,-74.098,4.04,4000
+Ricaurte,NQS,transbordo,2,4.61,-74.09,1.65,9000
+Salitre-El Greco,Calle 26,sencilla,1,4.653,-74.094,5.96,4000
+San Façon-Carrera 22,Américas,sencilla,1,4.607,-74.087,1.19,4000
+Santa Isabel,NQS,sencilla,1,4.6,-74.1,2.5,4000
+Sena,NQS,sencilla,1,4.595,-74.105,3.15,4000
+Simón Bolívar,NQS,sencilla,1,4.656,-74.077,6.0,4000
+Tercer Milenio,Caracas-Autonorte,sencilla,1,4.5975,-74.0815,0.67,4000
+Toberín,Caracas-Autonorte,sencilla,1,4.7466,-74.047,16.43,4000
+Transversal 86,Américas,sencilla,1,4.629,-74.159,9.52,4000
+Tygua-San José,Caracas-Autonorte,sencilla,1,4.583,-74.0905,2.56,4000
+U. Nacional,NQS,sencilla,1,4.64,-74.079,4.23,4000
+Venecia,NQS,sencilla,1,4.595,-74.14,6.97,4000
+Virrey,Caracas-Autonorte,sencilla,1,4.676,-74.0575,8.52,4000
+Zona Industrial,Américas,sencilla,1,4.62,-74.103,3.46,4000
